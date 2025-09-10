@@ -23,6 +23,15 @@ export const mock = {
     image: "/figma2/identity-passport-7f9186.png",
   },
 
+  story: {
+    title: "Product story",
+    video: {
+      av1: "/videos/story-av1.mp4",
+      webm: "/videos/story.webm",
+      h264: "/videos/story.mp4",
+    },
+  },
+
   identity: {
     label: "Identity",
     title: "Product identity",
