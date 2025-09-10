@@ -1,0 +1,42 @@
+image: node:22
+
+stages: [deploy]
+
+variables:
+  NEXT_TELEMETRY_DISABLED: "1"
+
+cache:
+  key: "pnpm-store"
+  paths:
+    - .pnpm-store/
+  policy: pull-push
+
+.deploy: &deploy
+  stage: deploy
+  before_script:
+    - corepack enable
+    - corepack prepare pnpm@10 --activate
+    - pnpm config set store-dir .pnpm-store
+    - pnpm install --frozen-lockfile
+    - pnpm dlx vercel@latest pull --yes --environment=$VERCEL_ENV --token $VERCEL_TOKEN
+  script:
+    - pnpm dlx vercel@latest build $VERCEL_BUILD_FLAGS --token $VERCEL_TOKEN
+    - pnpm dlx vercel@latest deploy --prebuilt $VERCEL_DEPLOY_FLAGS --token $VERCEL_TOKEN
+
+deploy_preview:
+  <<: *deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "main"'
+  variables:
+    VERCEL_ENV: "preview"
+    VERCEL_BUILD_FLAGS: ""         # preview build
+    VERCEL_DEPLOY_FLAGS: ""        # preview deploy
+
+deploy_production:
+  <<: *deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  variables:
+    VERCEL_ENV: "production"
+    VERCEL_BUILD_FLAGS: "--prod"   # production build
+    VERCEL_DEPLOY_FLAGS: "--prod"  # production deploy
