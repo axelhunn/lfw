@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { mock } from "@/prototype/0";
 
 type Props = ComponentProps<typeof Card> & {
   nextHref?: string;
@@ -18,8 +19,8 @@ type Props = ComponentProps<typeof Card> & {
 export const Proof = ({ nextHref = "#story", className, ...props }: Props) => (
   <Card className={cn(className)} {...props}>
     <CardHeader>
-      <CardTitle>Proof</CardTitle>
-      <CardDescription>Authenticity & provenance</CardDescription>
+      <CardTitle>{mock.proof.title}</CardTitle>
+      <CardDescription>{mock.proof.description}</CardDescription>
     </CardHeader>
 
     <CardContent>
@@ -27,17 +28,20 @@ export const Proof = ({ nextHref = "#story", className, ...props }: Props) => (
         <li className="flex items-start gap-2">
           <ShieldCheck className="size-4 mt-0.5" />
           <span>
-            Authenticity: <strong>Verified</strong>
+            {mock.proof.authenticityLabel}{" "}
+            <strong>{mock.proof.authenticityValue}</strong>
           </span>
         </li>
         <li className="flex items-start gap-2">
           <BadgeCheck className="size-4 mt-0.5" />
-          <span>NFC tag and passport bound to this physical item.</span>
+          <span>{mock.proof.boundMessage}</span>
         </li>
         <li className="flex items-start gap-2">
-          <span className="text-muted-foreground">On-chain proof:</span>
+          <span className="text-muted-foreground">
+            {mock.proof.onChainLabel}
+          </span>
           <code className="rounded border px-1.5 py-0.5 text-xs">
-            0x8f1c…d2a9
+            {mock.proof.onChainId}
           </code>
         </li>
       </ul>
@@ -45,13 +49,13 @@ export const Proof = ({ nextHref = "#story", className, ...props }: Props) => (
 
     <CardFooter className="justify-between border-t">
       <Button asChild variant="outline">
-        <a href="#identity-qr" aria-label="Show QR code for verification">
-          Show QR
+        <a href="#identity-qr" aria-label={mock.proof.showQrLabel}>
+          {mock.proof.showQrLabel}
         </a>
       </Button>
       <Button asChild aria-label="Continue to Story">
         <a href={nextHref}>
-          Continue
+          {mock.proof.continueLabel}
           <ArrowRight className="ms-2 size-4" />
         </a>
       </Button>

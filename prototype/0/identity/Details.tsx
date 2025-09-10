@@ -6,59 +6,60 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { mock } from "@/prototype/0";
 
 type Props = ComponentProps<typeof Card>;
 
 export const Details = (props: Props) => (
   <Card {...props}>
     <CardHeader>
-      <CardTitle>Identity</CardTitle>
-      <CardDescription>Core product identifiers</CardDescription>
+      <CardTitle>{mock.identity.text.title}</CardTitle>
+      <CardDescription>{mock.identity.text.description}</CardDescription>
     </CardHeader>
 
     <CardContent>
       <dl className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
         <div>
           <dt className="text-muted-foreground">Brand</dt>
-          <dd>Roksanda</dd>
+          <dd>{mock.identity.details.brand}</dd>
         </div>
         <div>
           <dt className="text-muted-foreground">Model</dt>
-          <dd>Signature Sculpt Dress</dd>
+          <dd>{mock.identity.details.model}</dd>
         </div>
         <div className="sm:col-span-2">
           <dt className="text-muted-foreground">Product name</dt>
-          <dd>Signature Sculpt Dress</dd>
+          <dd>{mock.identity.details.productName}</dd>
         </div>
         <div>
           <dt className="text-muted-foreground">SKU</dt>
           <dd>
             <code className="rounded border px-1.5 py-0.5 text-xs">
-              ROK-SS24-001
+              {mock.identity.details.sku}
             </code>
           </dd>
         </div>
         <div>
           <dt className="text-muted-foreground">Color</dt>
-          <dd>Ivory</dd>
+          <dd>{mock.identity.details.color}</dd>
         </div>
         <div>
           <dt className="text-muted-foreground">Size</dt>
-          <dd>UK 8</dd>
+          <dd>{mock.identity.details.size}</dd>
         </div>
         <div>
           <dt className="text-muted-foreground">Material</dt>
-          <dd>Silk blend</dd>
+          <dd>{mock.identity.details.material}</dd>
         </div>
         <div>
           <dt className="text-muted-foreground">Country of origin</dt>
-          <dd>United Kingdom</dd>
+          <dd>{mock.identity.details.countryOfOrigin}</dd>
         </div>
         <div className="sm:col-span-2">
           <dt className="text-muted-foreground">On-chain ID</dt>
           <dd>
             <code className="rounded border px-1.5 py-0.5 text-xs">
-              0x8f1c…d2a9
+              {mock.identity.details.onChainId}
             </code>
           </dd>
         </div>

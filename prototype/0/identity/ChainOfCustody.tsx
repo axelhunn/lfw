@@ -6,34 +6,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { mock } from "@/prototype/0";
 
 type Props = ComponentProps<typeof Card>;
-
-const EVENTS: Array<{
-  title: string;
-  detail?: string;
-  date: string;
-}> = [
-  { title: "Item created", detail: "Factory QC complete", date: "2024-08-12" },
-  {
-    title: "Shipped to boutique",
-    detail: "Batch #SS24-07",
-    date: "2024-09-14",
-  },
-  { title: "Received in store", detail: "New Bond Street", date: "2024-09-18" },
-  { title: "Purchased", detail: "Passport activated", date: "2025-02-16" },
-];
 
 export const ChainOfCustody = (props: Props) => (
   <Card {...props}>
     <CardHeader>
-      <CardTitle>Chain of custody</CardTitle>
-      <CardDescription>Ownership & transfer log</CardDescription>
+      <CardTitle>{mock.chain.text.title}</CardTitle>
+      <CardDescription>{mock.chain.text.description}</CardDescription>
     </CardHeader>
 
     <CardContent>
       <ol className="border-s ps-5 space-y-4">
-        {EVENTS.map((e, i) => (
+        {mock.chain.events.map((e, i) => (
           <li key={`${e.title}-${i}`} className="relative">
             <span
               aria-hidden

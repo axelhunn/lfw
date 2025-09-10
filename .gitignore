@@ -50,4 +50,4 @@ next-env.d.ts
 *.sln
 *.sw?
 .vs
-
+.playwright-mcp
