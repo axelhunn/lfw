@@ -1,7 +1,13 @@
-import Image from "next/image";
-import placeholderImage from "@/public/figma2/identity-passport-7f9186.png";
+import { ModelViewerClientSide } from "./ModelViewerClientSide";
 
-//TODO: replace with real 3D viewer
 export const Viewer = () => (
-  <Image src={placeholderImage} alt="3D viewer placeholder" />
+  <ModelViewerClientSide
+    src="/yaku-model.glb"
+    poster="/product-model-placeholder.webp"
+    camera-controls
+    powerPreference="low-power"
+    className="w-full h-[546]"
+  >
+    <div slot="progress-bar"></div>
+  </ModelViewerClientSide>
 );

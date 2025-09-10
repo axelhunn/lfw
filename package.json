@@ -10,6 +10,7 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@google/model-viewer": "^4.1.0",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -17,7 +18,8 @@
     "next": "15.5.2",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.3",
